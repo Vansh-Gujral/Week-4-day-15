@@ -1,0 +1,60 @@
+#include <iostream>
+
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+Node* deleteNode(Node* head, int value) {
+    if (head == nullptr) {
+        return head;
+    }
+
+    if (head->data == value) {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        return head;
+    }
+
+    Node* current = head;
+    while (current->next != nullptr) {
+        if (current->next->data == value) {
+            Node* temp = current->next;
+            current->next = temp->next;
+            delete temp;
+            return head;
+        }
+        current = current->next;
+    }
+
+    return head;
+}
+
+int main() {
+    Node* head = new Node();
+    head->data = 10;
+
+    Node* node2 = new Node();
+    node2->data = 20;
+    head->next = node2;
+
+    Node* node3 = new Node();
+    node3->data = 30;
+    node2->next = node3;
+
+    Node* node4 = new Node();
+    node4->data = 40;
+    node3->next = node4;
+
+    head = deleteNode(head, 20);
+    while (head != nullptr) {
+        cout << head->data << " ";
+        head = head->next;
+    }
+    cout << endl;
+
+    return 0;
+}
