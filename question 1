@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Student {
+public:
+    string name;
+    int rollNumber;
+    int age;
+
+    void displayDetails() {
+        cout << "Name: " << this->name << endl;
+        cout << "Roll Number: " << this->rollNumber << endl;
+        cout << "Age: " << this->age << endl;
+    }
+};
+
+int main() {
+    Student student1;
+    student1.name = "Alice";
+    student1.rollNumber = 123;
+    student1.age = 20;
+
+    student1.displayDetails();
+
+    return 0;
+}
